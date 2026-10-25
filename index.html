@@ -3,97 +3,168 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101010">
-<title>Tuning AZ | Avtomobil dünyası</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0d">
+<title>Tuning AZ | Avtomobil mədəniyyəti</title>
+<meta name="description" content="Tuning AZ — avtomobil tüninqi, klassik modellər və fərqli dizayn layihələri.">
 
 <style>
+:root{
+  --bg:#0b0b0d;
+  --panel:#151518;
+  --red:#ff303b;
+  --text:#f6f6f6;
+  --muted:#a3a3ad;
+  --line:#2b2b31;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;background:#101010;color:#fff;
- font-family:Arial,sans-serif
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
 }
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
 header{
- padding:18px 6%;display:flex;align-items:center;
- justify-content:space-between;gap:15px;
- background:#171717;border-bottom:1px solid #333;
- position:sticky;top:0;z-index:5
+  position:sticky;top:0;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:17px 6%;
+  background:#0b0b0df2;border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px);
 }
-.logo{font-size:25px;font-weight:900;font-style:italic}
-.logo span,.red{color:#ff303b}
-nav{display:flex;gap:15px;flex-wrap:wrap}
-a{color:white;text-decoration:none}
-nav a:hover{color:#ff303b}
+.logo{font-weight:900;font-size:25px;letter-spacing:1px}
+.logo span,.red{color:var(--red)}
+nav{display:flex;gap:20px;font-size:14px}
+nav a:hover{color:var(--red)}
 .hero{
- padding:65px 7%;min-height:330px;
- background:linear-gradient(90deg,#090909 10%,#101010dd 50%,#10101055),
- url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=85') center/cover
+  min-height:470px;display:flex;align-items:center;
+  padding:65px 7%;
+  background:
+    linear-gradient(90deg,#09090bf5 0%,#09090bbd 48%,#09090b20 100%),
+    url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=85")
+    center 55%/cover no-repeat;
 }
-.hero h1{font-size:clamp(36px,7vw,64px);margin:12px 0}
-.hero p{color:#ccc;max-width:430px;line-height:1.7}
-button{
- background:#ff303b;color:white;border:0;
- padding:12px 18px;border-radius:6px;
- cursor:pointer;font-weight:bold
+.hero-content{max-width:620px}
+.eyebrow{
+  color:var(--red);font-weight:bold;letter-spacing:3px;
+  font-size:12px;text-transform:uppercase
 }
-button:hover{background:#d91625}
-section{padding:30px 6%}
-.section-title{display:flex;align-items:center;gap:12px}
-.section-title:before{
- content:"";width:28px;height:4px;background:#ff303b
+.hero h1{
+  font-size:clamp(44px,9vw,82px);line-height:.98;
+  margin:18px 0;letter-spacing:-3px
 }
-.tools{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
-input,select,textarea{
- background:#1b1b1b;color:white;border:1px solid #444;
- border-radius:6px;padding:12px;font-size:15px;
- min-width:0
+.hero p{color:#d0d0d5;line-height:1.8;max-width:470px}
+.primary{
+  display:inline-block;margin-top:15px;padding:14px 22px;
+  border:0;border-radius:5px;background:var(--red);
+  color:white;font-weight:bold
 }
-.tools input{flex:1;min-width:170px}
+.primary:hover{background:#d91f2a}
+section{padding:45px 6%}
+.section-head{
+  display:flex;justify-content:space-between;align-items:end;
+  gap:15px;margin-bottom:22px
+}
+.section-head h2{margin:8px 0;font-size:clamp(24px,5vw,34px)}
+.section-head p{color:var(--muted);font-size:13px}
+.filters{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
+.filters input,.filters select{
+  background:var(--panel);border:1px solid var(--line);
+  color:white;border-radius:6px;padding:13px;
+}
+.filters input{flex:1;min-width:160px}
+.filters select{max-width:100%;min-width:140px}
 .grid{
- display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
- gap:16px
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px
 }
 .card{
- background:#191919;border:1px solid #333;
- border-radius:9px;overflow:hidden
+  overflow:hidden;background:var(--panel);
+  border:1px solid var(--line);border-radius:10px;
+  transition:transform .2s,border-color .2s;
 }
-.card img{width:100%;height:160px;object-fit:cover;display:block}
-.card-content{padding:15px}
-.card h3{margin:0 0 8px;font-size:18px}
-.card p{color:#bbb;font-size:14px;line-height:1.5}
-.tag{color:#ff555d;font-size:12px}
-.projects{background:#151515}
-.empty{color:#aaa;display:none;padding:15px 0}
-.about{color:#ccc;line-height:1.8;max-width:700px}
+.card:hover{transform:translateY(-4px);border-color:#595960}
+.photo{position:relative;overflow:hidden;background:#222}
+.photo img{
+  width:100%;height:205px;display:block;object-fit:cover;
+  transition:transform .35s
+}
+.card:hover .photo img{transform:scale(1.04)}
+.label{
+  position:absolute;top:12px;left:12px;
+  padding:6px 9px;background:#0b0b0dd9;
+  color:#ff626a;font-size:10px;font-weight:bold;
+  border-radius:4px;letter-spacing:1px
+}
+.card-body{padding:16px}
+.card-body h3{font-size:18px;margin:0 0 9px}
+.card-body p{font-size:13px;line-height:1.7;color:var(--muted);margin:0 0 15px}
+.card-bottom{
+  border-top:1px solid var(--line);padding-top:13px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;font-size:12px;color:#bbb
+}
+.details{
+  background:transparent;border:1px solid #494950;
+  color:white;border-radius:5px;padding:9px 11px
+}
+.details:hover{background:var(--red);border-color:var(--red)}
+.empty{display:none;color:var(--muted);padding:25px 0}
+.projects{background:#111114}
+.project-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px
+}
+.project{
+  border:1px solid var(--line);border-radius:8px;
+  padding:22px;background:linear-gradient(135deg,#1c1c20,#111114)
+}
+.project span{font-size:11px;color:var(--red);letter-spacing:1px}
+.project h3{margin:12px 0 7px}
+.project p{color:var(--muted);font-size:13px;line-height:1.6}
+.about{
+  max-width:720px;color:#bdbdc5;line-height:1.9;font-size:15px
+}
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;margin-top:25px
+}
+.stat{padding:17px;background:var(--panel);border-radius:7px}
+.stat strong{display:block;color:var(--red);font-size:22px}
+.stat span{font-size:12px;color:var(--muted)}
 footer{
- border-top:1px solid #333;padding:25px 6%;
- color:#aaa;text-align:center
+  border-top:1px solid var(--line);padding:28px 6%;
+  text-align:center;color:var(--muted);font-size:12px
 }
-@media(max-width:700px){
- header{align-items:flex-start;flex-direction:column}
- nav{gap:14px;font-size:14px}
- .hero{padding:45px 6%;background-position:center}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .card img{height:120px}
- .card-content{padding:10px}
- .card h3{font-size:15px}
- .card p{font-size:13px}
- section{padding:24px 5%}
+footer .logo{color:white;font-size:21px;margin-bottom:8px}
+@media(max-width:760px){
+  header{align-items:flex-start;flex-direction:column;padding:15px 5%}
+  nav{gap:15px;flex-wrap:wrap;font-size:13px}
+  .hero{min-height:410px;padding:45px 6%;background-position:58% center}
+  section{padding:34px 5%}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .photo img{height:145px}
+  .card-body{padding:11px}
+  .card-body h3{font-size:15px}
+  .card-body p{font-size:12px}
+  .card-bottom{align-items:flex-start;flex-direction:column}
+  .details{width:100%}
 }
 @media(max-width:390px){
- .grid{grid-template-columns:1fr}
- .card img{height:180px}
+  .grid{grid-template-columns:1fr}
+  .photo img{height:210px}
+  .project-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 <header>
-  <a href="#home" class="logo">TUNING <span>AZ</span></a>
+  <a class="logo" href="#home">TUNING <span>AZ</span></a>
   <nav>
     <a href="#home">Ana səhifə</a>
-    <a href="#cars">Maşınlar</a>
+    <a href="#cars">Avtomobillər</a>
     <a href="#projects">Layihələr</a>
     <a href="#about">Haqqımızda</a>
   </nav>
@@ -101,18 +172,30 @@ footer{
 
 <main>
 <section class="hero" id="home">
-  <p class="red">AVTOMOBİL TUNİNQ DÜNYASI</p>
-  <h1>TUNING <span class="red">AZ</span></h1>
-  <h2>Adi maşından fərqli xarakterə.</h2>
-  <p>Avtomobil layihələri, aqressiv tüninq və AI ilə yaradılmış fərqli dizaynlar.</p>
-  <a href="#cars"><button>Kəşf et →</button></a>
+  <div class="hero-content">
+    <div class="eyebrow">Avtomobil mədəniyyəti · Azərbaycan</div>
+    <h1>DRIVE YOUR<br><span class="red">STYLE.</span></h1>
+    <p>
+      Klassik avtomobillər, aqressiv tüninq və fərqli dizayn ideyaları.
+      Avtomobil dünyasına Tuning AZ baxışı.
+    </p>
+    <a class="primary" href="#cars">Layihələri kəşf et ↗</a>
+  </div>
 </section>
 
 <section id="cars">
-  <h2 class="section-title">Populyar modellər</h2>
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Qarajımız</div>
+      <h2>Avtomobil kolleksiyası</h2>
+    </div>
+  </div>
+  <p style="color:var(--muted);font-size:13px;line-height:1.7">
+    Model seç, axtar və öz sevdiyin avtomobili tap.
+  </p>
 
-  <div class="tools">
-    <input id="search" placeholder="Maşın axtar...">
+  <div class="filters">
+    <input id="search" type="search" placeholder="Model axtar...">
     <select id="brand">
       <option value="all">Bütün markalar</option>
       <option value="Mercedes">Mercedes-Benz</option>
@@ -122,116 +205,126 @@ footer{
   </div>
 
   <div class="grid" id="carGrid"></div>
-  <p class="empty" id="empty">Axtarışa uyğun maşın tapılmadı.</p>
+  <p class="empty" id="empty">Bu axtarışa uyğun model tapılmadı.</p>
 </section>
 
 <section class="projects" id="projects">
-  <h2 class="section-title">Son layihələr</h2>
-  <div class="grid" id="projectGrid"></div>
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Stock → Modified</div>
+      <h2>Tuning layihələri</h2>
+    </div>
+  </div>
+  <div class="project-grid" id="projectGrid"></div>
 </section>
 
 <section id="about">
-  <h2 class="section-title">Haqqımızda</h2>
+  <div class="eyebrow">Biz kimik?</div>
+  <h2>Tuning AZ haqqında</h2>
   <p class="about">
-    Tuning AZ avtomobil həvəskarları üçün yaradılan layihədir.
-    Burada klassik avtomobillər, fərqli modifikasiyalar və
-    süni intellektlə hazırlanmış dizayn ideyaları paylaşılır.
-    Məqsədimiz avtomobil dünyasına fərqli baxış təqdim etməkdir.
+    Tuning AZ avtomobil həvəskarları üçün yaradılmış rəqəmsal layihədir.
+    Klassik Mercedes modellərindən BMW layihələrinə, Lada avtomobillərindən
+    süni intellektlə hazırlanmış yeni dizaynlara qədər — burada əsas məqsəd
+    avtomobillərin fərqli xarakterini göstərməkdir.
   </p>
-  <a href="#cars"><button>Maşınları araşdır →</button></a>
+  <div class="stats">
+    <div class="stat"><strong>01</strong><span>Avtomobil ruhu</span></div>
+    <div class="stat"><strong>AI</strong><span>Dizayn ideyaları</span></div>
+    <div class="stat"><strong>AZ</strong><span>Yerli layihə</span></div>
+  </div>
 </section>
 </main>
 
 <footer>
-  <p><strong>TUNING <span class="red">AZ</span></strong></p>
-  <p>© 2026 Tuning AZ · Avtomobil həvəskarları üçün</p>
+  <div class="logo">TUNING <span class="red">AZ</span></div>
+  <p>Avtomobil həvəsi. Fərqli xarakter.</p>
+  <p>© 2026 Tuning AZ</p>
 </footer>
 
 <script>
 const cars = [
   {
-    name:"Mercedes-Benz W124",
-    brand:"Mercedes",
-    desc:"Klassik görünüş və aqressiv AMG üslubu.",
-    img:"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80"
+    name:"Mercedes-Benz W124",brand:"Mercedes",tag:"CLASSIC AMG",
+    desc:"Klassik Mercedes dizaynı və aqressiv görünüş.",
+    img:"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=85"
   },
   {
-    name:"BMW E39",
-    brand:"BMW",
-    desc:"İdman xarakteri və fərqli dizayn.",
-    img:"https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80"
+    name:"BMW E39",brand:"BMW",tag:"SPORT STYLE",
+    desc:"İdman xarakteri və zamansız BMW üslubu.",
+    img:"https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=85"
   },
   {
-    name:"Mercedes-Benz W211",
-    brand:"Mercedes",
-    desc:"Rahatlıq, güc və VIP üslubu.",
-    img:"https://images.unsplash.com/photo-1618843479618-39b7c9a4b4a1?auto=format&fit=crop&w=700&q=80"
+    name:"Mercedes-Benz W211",brand:"Mercedes",tag:"VIP LUXURY",
+    desc:"Zəriflik, rahatlıq və fərdi dizayn.",
+    img:"https://images.unsplash.com/photo-1618843479618-39b7c9a4b4a1?auto=format&fit=crop&w=900&q=85"
   },
   {
-    name:"Lada Niva",
-    brand:"Lada",
-    desc:"Sadə görünüşdən fərqli layihəyə.",
-    img:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=700&q=80"
+    name:"Lada Niva",brand:"Lada",tag:"LIGHT TUNING",
+    desc:"Klassik yolsuzluq avtomobilinə fərqli baxış.",
+    img:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=85"
   },
   {
-    name:"BMW E38",
-    brand:"BMW",
-    desc:"Klassik lüks və fərdi tüninq.",
-    img:"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
+    name:"BMW E38",brand:"BMW",tag:"EXECUTIVE",
+    desc:"Klassik lüks və fərqli xarici görünüş.",
+    img:"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=85"
   },
   {
-    name:"Mercedes-Benz W210",
-    brand:"Mercedes",
-    desc:"Klassik Mercedes ruhu.",
-    img:"https://images.unsplash.com/photo-1618843479618-39b7c9a4b4a1?auto=format&fit=crop&w=700&q=80"
+    name:"Mercedes-Benz W210",brand:"Mercedes",tag:"GERMAN CLASSIC",
+    desc:"Klassik Mercedes xəttləri və fərdi üslub.",
+    img:"https://images.unsplash.com/photo-1618843479618-39b7c9a4b4a1?auto=format&fit=crop&w=900&q=85"
   }
 ];
 
 const projects = [
-  {name:"BMW E39 — Aqressiv Tüninq",type:"AI dizayn"},
-  {name:"Mercedes W124 — AMG Stil",type:"Tüninq layihəsi"},
-  {name:"Mercedes W211 — VIP Luxury",type:"AI dizayn"},
-  {name:"Lada Niva — Light Tuning",type:"Tüninq layihəsi"}
+  {title:"BMW E39",subtitle:"Aqressiv tüninq",type:"01 / SPORT"},
+  {title:"Mercedes W124",subtitle:"AMG üslubunda layihə",type:"02 / CLASSIC"},
+  {title:"Mercedes W211",subtitle:"VIP Luxury konsepti",type:"03 / LUXURY"},
+  {title:"Lada Niva",subtitle:"Sadə, fərqli modifikasiya",type:"04 / OFF-ROAD"}
 ];
 
 function renderCars(){
-  const query=document.getElementById("search").value.toLowerCase().trim();
-  const brand=document.getElementById("brand").value;
-  const filtered=cars.filter(car=>
-    car.name.toLowerCase().includes(query) &&
-    (brand==="all" || car.brand===brand)
+  const q=document.getElementById("search").value.toLowerCase().trim();
+  const b=document.getElementById("brand").value;
+  const filtered=cars.filter(c=>
+    c.name.toLowerCase().includes(q) &&
+    (b==="all"||c.brand===b)
   );
 
-  document.getElementById("carGrid").innerHTML=filtered.map(car=>`
+  document.getElementById("carGrid").innerHTML=filtered.map((c,i)=>`
     <article class="card">
-      <img src="${car.img}" alt="${car.name}" loading="lazy">
-      <div class="card-content">
-        <span class="tag">${car.brand}</span>
-        <h3>${car.name}</h3>
-        <p>${car.desc}</p>
-        <button onclick="showCar('${car.name}')">Ətraflı bax</button>
+      <div class="photo">
+        <img src="${c.img}" alt="${c.name}" loading="lazy"
+             onerror="this.style.display='none'">
+        <span class="label">${c.tag}</span>
+      </div>
+      <div class="card-body">
+        <h3>${c.name}</h3>
+        <p>${c.desc}</p>
+        <div class="card-bottom">
+          <span>${c.brand} · Tuning AZ</span>
+          <button class="details" onclick="showDetails(${i},'${c.name}')">
+            Ətraflı bax ↗
+          </button>
+        </div>
       </div>
     </article>
   `).join("");
 
-  document.getElementById("empty").style.display=
-    filtered.length ? "none" : "block";
+  document.getElementById("empty").style.display=filtered.length?"none":"block";
 }
 
-function showCar(name){
-  alert(name + "\\nTuning AZ avtomobil layihəsi!");
+function showDetails(i,name){
+  alert(name+"\n\nTuning AZ avtomobil kolleksiyası.\nYeni layihələr tezliklə!");
 }
 
 document.getElementById("search").addEventListener("input",renderCars);
 document.getElementById("brand").addEventListener("change",renderCars);
 
-document.getElementById("projectGrid").innerHTML=projects.map((p,i)=>`
-  <article class="card">
-    <div class="card-content">
-      <span class="tag">LAYİHƏ #${i+1}</span>
-      <h3>${p.name}</h3>
-      <p>${p.type}</p>
-    </div>
+document.getElementById("projectGrid").innerHTML=projects.map(p=>`
+  <article class="project">
+    <span>${p.type}</span>
+    <h3>${p.title}</h3>
+    <p>${p.subtitle}</p>
   </article>
 `).join("");
 
