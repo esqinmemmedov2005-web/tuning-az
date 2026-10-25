@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>Tuning AZ | Avtomobil dünyası</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:#101010;color:#fff;
+ font-family:Arial,sans-serif
+}
+header{
+ padding:18px 6%;display:flex;align-items:center;
+ justify-content:space-between;gap:15px;
+ background:#171717;border-bottom:1px solid #333;
+ position:sticky;top:0;z-index:5
+}
+.logo{font-size:25px;font-weight:900;font-style:italic}
+.logo span,.red{color:#ff303b}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+a{color:white;text-decoration:none}
+nav a:hover{color:#ff303b}
+.hero{
+ padding:65px 7%;min-height:330px;
+ background:linear-gradient(90deg,#090909 10%,#101010dd 50%,#10101055),
+ url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=85') center/cover
+}
+.hero h1{font-size:clamp(36px,7vw,64px);margin:12px 0}
+.hero p{color:#ccc;max-width:430px;line-height:1.7}
+button{
+ background:#ff303b;color:white;border:0;
+ padding:12px 18px;border-radius:6px;
+ cursor:pointer;font-weight:bold
+}
+button:hover{background:#d91625}
+section{padding:30px 6%}
+.section-title{display:flex;align-items:center;gap:12px}
+.section-title:before{
+ content:"";width:28px;height:4px;background:#ff303b
+}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+input,select,textarea{
+ background:#1b1b1b;color:white;border:1px solid #444;
+ border-radius:6px;padding:12px;font-size:15px;
+ min-width:0
+}
+.tools input{flex:1;min-width:170px}
+.grid{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:16px
+}
+.card{
+ background:#191919;border:1px solid #333;
+ border-radius:9px;overflow:hidden
+}
+.card img{width:100%;height:160px;object-fit:cover;display:block}
+.card-content{padding:15px}
+.card h3{margin:0 0 8px;font-size:18px}
+.card p{color:#bbb;font-size:14px;line-height:1.5}
+.tag{color:#ff555d;font-size:12px}
+.projects{background:#151515}
+.empty{color:#aaa;display:none;padding:15px 0}
+.about{color:#ccc;line-height:1.8;max-width:700px}
+footer{
+ border-top:1px solid #333;padding:25px 6%;
+ color:#aaa;text-align:center
+}
+@media(max-width:700px){
+ header{align-items:flex-start;flex-direction:column}
+ nav{gap:14px;font-size:14px}
+ .hero{padding:45px 6%;background-position:center}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card img{height:120px}
+ .card-content{padding:10px}
+ .card h3{font-size:15px}
+ .card p{font-size:13px}
+ section{padding:24px 5%}
+}
+@media(max-width:390px){
+ .grid{grid-template-columns:1fr}
+ .card img{height:180px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a href="#home" class="logo">TUNING <span>AZ</span></a>
+  <nav>
+    <a href="#home">Ana səhifə</a>
+    <a href="#cars">Maşınlar</a>
+    <a href="#projects">Layihələr</a>
+    <a href="#about">Haqqımızda</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <p class="red">AVTOMOBİL TUNİNQ DÜNYASI</p>
+  <h1>TUNING <span class="red">AZ</span></h1>
+  <h2>Adi maşından fərqli xarakterə.</h2>
+  <p>Avtomobil layihələri, aqressiv tüninq və AI ilə yaradılmış fərqli dizaynlar.</p>
+  <a href="#cars"><button>Kəşf et →</button></a>
+</section>
+
+<section id="cars">
+  <h2 class="section-title">Populyar modellər</h2>
+
+  <div class="tools">
+    <input id="search" placeholder="Maşın axtar...">
+    <select id="brand">
+      <option value="all">Bütün markalar</option>
+      <option value="Mercedes">Mercedes-Benz</option>
+      <option value="BMW">BMW</option>
+      <option value="Lada">Lada</option>
+    </select>
+  </div>
+
+  <div class="grid" id="carGrid"></div>
+  <p class="empty" id="empty">Axtarışa uyğun maşın tapılmadı.</p>
+</section>
+
+<section class="projects" id="projects">
+  <h2 class="section-title">Son layihələr</h2>
+  <div class="grid" id="projectGrid"></div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">Haqqımızda</h2>
+  <p class="about">
+    Tuning AZ avtomobil həvəskarları üçün yaradılan layihədir.
+    Burada klassik avtomobillər, fərqli modifikasiyalar və
+    süni intellektlə hazırlanmış dizayn ideyaları paylaşılır.
+    Məqsədimiz avtomobil dünyasına fərqli baxış təqdim etməkdir.
+  </p>
+  <a href="#cars"><button>Maşınları araşdır →</button></a>
+</section>
+</main>
+
+<footer>
+  <p><strong>TUNING <span class="red">AZ</span></strong></p>
+  <p>© 2026 Tuning AZ · Avtomobil həvəskarları üçün</p>
+</footer>
+
+<script>
+const cars = [
+  {
+    name:"Mercedes-Benz W124",
+    brand:"Mercedes",
+    desc:"Klassik görünüş və aqressiv AMG üslubu.",
+    img:"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    name:"BMW E39",
+    brand:"BMW",
+    desc:"İdman xarakteri və fərqli dizayn.",
+    img:"https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    name:"Mercedes-Benz W211",
+    brand:"Mercedes",
+    desc:"Rahatlıq, güc və VIP üslubu.",
+    img:"https://images.unsplash.com/photo-1618843479618-39b7c9a4b4a1?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    name:"Lada Niva",
+    brand:"Lada",
+    desc:"Sadə görünüşdən fərqli layihəyə.",
+    img:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    name:"BMW E38",
+    brand:"BMW",
+    desc:"Klassik lüks və fərdi tüninq.",
+    img:"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    name:"Mercedes-Benz W210",
+    brand:"Mercedes",
+    desc:"Klassik Mercedes ruhu.",
+    img:"https://images.unsplash.com/photo-1618843479618-39b7c9a4b4a1?auto=format&fit=crop&w=700&q=80"
+  }
+];
+
+const projects = [
+  {name:"BMW E39 — Aqressiv Tüninq",type:"AI dizayn"},
+  {name:"Mercedes W124 — AMG Stil",type:"Tüninq layihəsi"},
+  {name:"Mercedes W211 — VIP Luxury",type:"AI dizayn"},
+  {name:"Lada Niva — Light Tuning",type:"Tüninq layihəsi"}
+];
+
+function renderCars(){
+  const query=document.getElementById("search").value.toLowerCase().trim();
+  const brand=document.getElementById("brand").value;
+  const filtered=cars.filter(car=>
+    car.name.toLowerCase().includes(query) &&
+    (brand==="all" || car.brand===brand)
+  );
+
+  document.getElementById("carGrid").innerHTML=filtered.map(car=>`
+    <article class="card">
+      <img src="${car.img}" alt="${car.name}" loading="lazy">
+      <div class="card-content">
+        <span class="tag">${car.brand}</span>
+        <h3>${car.name}</h3>
+        <p>${car.desc}</p>
+        <button onclick="showCar('${car.name}')">Ətraflı bax</button>
+      </div>
+    </article>
+  `).join("");
+
+  document.getElementById("empty").style.display=
+    filtered.length ? "none" : "block";
+}
+
+function showCar(name){
+  alert(name + "\\nTuning AZ avtomobil layihəsi!");
+}
+
+document.getElementById("search").addEventListener("input",renderCars);
+document.getElementById("brand").addEventListener("change",renderCars);
+
+document.getElementById("projectGrid").innerHTML=projects.map((p,i)=>`
+  <article class="card">
+    <div class="card-content">
+      <span class="tag">LAYİHƏ #${i+1}</span>
+      <h3>${p.name}</h3>
+      <p>${p.type}</p>
+    </div>
+  </article>
+`).join("");
+
+renderCars();
+</script>
+</body>
+</html>
